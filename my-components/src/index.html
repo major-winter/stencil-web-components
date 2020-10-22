@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>Stencil Component Starter</title>
+
+    <script type="module" src="/build/my-components.esm.js"></script>
+    <script nomodule src="/build/my-components.js"></script>
+    <style>
+      p {
+        color: grey;
+      }
+      .side-nav ul {
+        list-style: none;
+      }
+      .side-nav li {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="side-drawer-btn">Open side drawer</button>
+    <side-drawer my-title="Main Menu"
+      ><p>My slot component</p>
+      <div slot="slider">
+        <h1>Slider</h1>
+        <nav class="side-nav">
+          <ul>
+            <li>Link 1</li>
+            <li>Link 2</li>
+            <li>Link 3</li>
+            <li>Link 4</li>
+          </ul>
+        </nav>
+      </div>
+    </side-drawer>
+
+    <script>
+      const sideDrawer = document.querySelector('side-drawer');
+
+      sideDrawer.setAttribute('my-title', 'jason set attribute');
+      const sideDrawerBtn = document.querySelector('#side-drawer-btn');
+      sideDrawerBtn.addEventListener('click', () => {
+        if (!sideDrawer.open) {
+          sideDrawer.open = true;
+          return;
+        }
+      });
+    </script>
+  </body>
+</html>
