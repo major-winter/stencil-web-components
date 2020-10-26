@@ -20,6 +20,10 @@
     </style>
   </head>
   <body>
+    <js-navbar></js-navbar>
+
+    <!-- <js-stock-price stock-symbol="AAPL">Fetch</js-stock-price> -->
+    <!-- <js-stock-finder>Find</js-stock-finder> -->
     <button id="side-drawer-btn">Open side drawer</button>
     <side-drawer my-title="Main Menu"
       ><p>My slot component</p>
@@ -37,6 +41,11 @@
     </side-drawer>
 
     <script>
+      // const stockFinder = document.querySelector('js-stock-finder')
+      // stockFinder.addEventListener('jsSymbolSelected', () => {
+      //   console.log('selected');
+      // })
+
       const sideDrawer = document.querySelector('side-drawer');
 
       sideDrawer.setAttribute('my-title', 'jason set attribute');
@@ -47,6 +56,14 @@
           return;
         }
       });
+
+      const navBar = document.querySelector('js-navbar')
+      navBar.addEventListener('mouseover', () => {
+        navBar.setAttribute('open', 0)
+      })
+      navBar.addEventListener('mouseleave', () => {
+        navBar.removeAttribute('open')
+      })
     </script>
   </body>
 </html>

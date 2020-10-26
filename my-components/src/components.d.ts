@@ -6,19 +6,13 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
+    interface JsNavbar {
+        "open": boolean;
+    }
+    interface JsStockFinder {
+    }
+    interface JsStockPrice {
+        "stockSymbol": string;
     }
     interface SideDrawer {
         "myTitle": string;
@@ -26,11 +20,23 @@ export namespace Components {
     }
 }
 declare global {
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    interface HTMLJsNavbarElement extends Components.JsNavbar, HTMLStencilElement {
     }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
+    var HTMLJsNavbarElement: {
+        prototype: HTMLJsNavbarElement;
+        new (): HTMLJsNavbarElement;
+    };
+    interface HTMLJsStockFinderElement extends Components.JsStockFinder, HTMLStencilElement {
+    }
+    var HTMLJsStockFinderElement: {
+        prototype: HTMLJsStockFinderElement;
+        new (): HTMLJsStockFinderElement;
+    };
+    interface HTMLJsStockPriceElement extends Components.JsStockPrice, HTMLStencilElement {
+    }
+    var HTMLJsStockPriceElement: {
+        prototype: HTMLJsStockPriceElement;
+        new (): HTMLJsStockPriceElement;
     };
     interface HTMLSideDrawerElement extends Components.SideDrawer, HTMLStencilElement {
     }
@@ -39,31 +45,30 @@ declare global {
         new (): HTMLSideDrawerElement;
     };
     interface HTMLElementTagNameMap {
-        "my-component": HTMLMyComponentElement;
+        "js-navbar": HTMLJsNavbarElement;
+        "js-stock-finder": HTMLJsStockFinderElement;
+        "js-stock-price": HTMLJsStockPriceElement;
         "side-drawer": HTMLSideDrawerElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
+    interface JsNavbar {
+        "open"?: boolean;
+    }
+    interface JsStockFinder {
+        "onJsSymbolSelected"?: (event: CustomEvent<string>) => void;
+    }
+    interface JsStockPrice {
+        "stockSymbol"?: string;
     }
     interface SideDrawer {
         "myTitle"?: string;
         "open"?: boolean;
     }
     interface IntrinsicElements {
-        "my-component": MyComponent;
+        "js-navbar": JsNavbar;
+        "js-stock-finder": JsStockFinder;
+        "js-stock-price": JsStockPrice;
         "side-drawer": SideDrawer;
     }
 }
@@ -71,7 +76,9 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "js-navbar": LocalJSX.JsNavbar & JSXBase.HTMLAttributes<HTMLJsNavbarElement>;
+            "js-stock-finder": LocalJSX.JsStockFinder & JSXBase.HTMLAttributes<HTMLJsStockFinderElement>;
+            "js-stock-price": LocalJSX.JsStockPrice & JSXBase.HTMLAttributes<HTMLJsStockPriceElement>;
             "side-drawer": LocalJSX.SideDrawer & JSXBase.HTMLAttributes<HTMLSideDrawerElement>;
         }
     }

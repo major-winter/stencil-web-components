@@ -1,0 +1,13 @@
+form button {
+  margin: 0 5px;
+}
+
+form button:disabled {
+  background: lightgray;
+  color: white;
+  cursor: not-allowed;
+}
+
+:host(.error) {
+  border-color: red;
+}

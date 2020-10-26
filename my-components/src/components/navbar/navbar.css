@@ -1,0 +1,50 @@
+:host {
+  display: block;
+}
+
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.nav-bar:hover,
+h1:hover {
+  opacity: 1;
+}
+
+.nav-bar__item {
+  text-align: center;
+}
+
+.nav-bar__item span {
+  cursor: pointer;
+}
+
+.nav-bar__item__list {
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transition: all 0.3s ease-in;
+  margin: 0.5rem 0;
+  z-index: 100;
+}
+
+.nav-bar__item__list a {
+  color: black;
+}
+
+:host([open]) .nav-bar__item__list {
+  opacity: 1;
+}
+
+.backdrop {
+  position: fixed;
+  background: black;
+  width: 100%; 
+  opacity: 0.1;
+  height: auto;
+}
